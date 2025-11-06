@@ -1,0 +1,139 @@
+:root { /* Setting baseline variables. In early testing, I got tired of tweaking things everywhere, although some of these are redundant now that I've solidified the design. */
+    --textColor: black;
+    --backgroundColor: linear-gradient(to bottom, #FFFFFF, #DDDDDD);
+    
+    --accentColor: var(--textColor);
+    --buttonColor: white;
+    --buttonTextColor: var(--textColor);
+}
+
+body { /* Using the variables to set the text and background colors, as well as making sure the background doesn't repeat which was an issue in early testing without images. */
+    color: var(--textColor);
+    background: var(--backgroundColor);
+    background-repeat: no-repeat;
+}
+
+header { /* Centering the text of the header. Pretty straightforward. */
+    text-align: center;
+}
+
+nav { /* Alignment plus ensuring proper spacing between nav and the articles. */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+nav a { /* Turning the links into proper buttons. */
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid var(--accentColor);
+    border-radius: 10px;
+    background: var(--buttonColor);
+    color: var(--buttonTextColor);
+}
+
+.story { /* Gives the articles a sort of card-esk outline and ensures proper spacing. */
+    border: 2px solid var(--accentColor);
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.story h2 { /* Slightly offsets the headers from the edges of the article. */
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.story p { /* Indents the first line, tweaks with the padding a bit, and gives some asthetic borders on the edges of the paragraphs. */
+    text-indent: 5%;
+    padding: 5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-left: 2px solid var(--accentColor);
+    border-right: 2px solid var(--accentColor);
+    margin: 10px;
+}
+
+.story img { /* Helps scale the image properly within bounds and stays centered. */
+    margin-left: 50%;
+    transform: translate(-50%,0%);
+    width: 50%;
+    max-width: 250px;
+    min-width: 150px;
+}
+
+
+/* The next two keep Story 3 and Story 4 hidden by default. This helps with the effect of rotating the stories around based on scale. */
+#story3, #story3button {
+    display: none;
+}
+
+#story4, #story4button {
+    display: none;
+}
+
+footer {
+    text-align: center;
+}
+
+@media (min-width: 576px) { /* Below I tweak the variables to change the background to different pastel gradients and adjust the image max widths based on the scale, as well as hide and reveal stories and their buttons in a rotation. */
+    :root {
+        --backgroundColor: linear-gradient(to bottom, #fae9e9, #d4bfbf);
+    }
+
+    .story img {
+        max-width: 300px;
+    }
+
+    #story1, #story1button {
+        display: none;
+    }
+    
+    #story3 {
+        display: block;
+    }
+
+    #story3button {
+        display: inline;
+    }
+}
+
+@media (min-width: 720px) {
+    :root {
+        --backgroundColor: linear-gradient(to bottom, #e9faea, #bfd4bf);
+    }
+
+    .story { /* Adjusting the margins to keep the paragraphs looking like paragraphs, otherwise they stretch out too far. */
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .story img {
+        max-width: 400px;
+    }
+
+    #story2, #story2button {
+        display: none;
+    }
+    
+    #story4 {
+        display: block;
+    }
+
+    #story4button {
+        display: inline;
+    }
+}
+
+@media (min-width: 992px) {
+    :root {
+        --backgroundColor: linear-gradient(to bottom, #e9ebfa, #bfbfd4);
+    }
+    
+    /* For the final scaling, essentially in a desktop mode, we show all the stories at once, along with their buttons. */
+    #story1, #story2, #story3, #story4 {
+        display: block;
+    }
+
+    #story1button, #story2button, #story3button, #story4button {
+        display: inline;
+    }
+}
